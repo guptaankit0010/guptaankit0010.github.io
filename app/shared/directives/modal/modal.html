@@ -1,0 +1,59 @@
+<div class="modal-overlay" ng-class="{'active': isModelOpen}" ng-click="modalClose()"></div>
+<div class='model-section' ng-class="{'active': isModelOpen}">
+    <div class="heading-section">
+        <div class="header-icon">
+            <i class="material-icons">featured_play_list</i>
+        </div>
+        <div class='title'>
+            {{selectedTask.title}}
+        </div>
+        <div class="task-name">
+            in list
+            <span>
+                {{selectedTask.parentList}}    
+            </span>
+        </div>
+        <div class="close-btn" ng-click="modalClose()">
+            <i class="material-icons">close</i>
+        </div>
+        <div class="delete-task">
+            <i class="material-icons" ng-click="deleteTaskItem()">delete_forever</i>
+        </div>
+    </div>
+    <div class="description">
+        <i class="material-icons">list</i>
+        <span ng-click="toggleEditTaskDescription()">{{taskDescriptionText}}</span>
+        <p ng-hide="ifDescriptionBoxOpen">{{selectedTask.description}}</p>
+        <div class="description-input" ng-show="ifDescriptionBoxOpen">
+            <textarea ng-model="taskDescription"></textarea>
+            <div class="add-new-task-action">
+                <button ng-click="updateTaskDescripton()" ng-class="{'active': taskDescription}">Add</button>
+                <i class="material-icons" ng-click="toggleEditTaskDescription()">close</i>
+            </div>
+        </div>
+    </div>
+    <div class="comment-input-section">
+        <div class="comment-icon">
+            <i class="material-icons">chat</i>
+        </div>
+        <h2>
+            Add Comment
+        </h2>
+        <textarea ng-model="commentInput">Write a comment..</textarea>
+        <button class="send-btn" ng-class="{'active': commentInput}" ng-click="addComment()">Send </button>
+    </div>
+    <div class="activity-section">
+        <div class="comment-icon">
+            <i class="material-icons">timeline</i>
+        </div>
+        <h2>
+            Activity
+        </h2>
+        <ul class="comment-section">
+            <li ng-repeat="data in selectedTask.comments">
+                <div class="description">{{data.description}}</div>
+                <div class="time">{{data.time | date : 'dd MMM, hh:mm a'}}</div>
+            </li>
+        </ul>
+    </div>
+</div>

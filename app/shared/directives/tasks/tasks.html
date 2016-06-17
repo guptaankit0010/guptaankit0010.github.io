@@ -1,0 +1,15 @@
+<div class="tasks" ui-sortable="sortableOptionsTasks" ng-model="list.tasks">
+    <div class="task-item" ng-repeat="task in list.tasks" ng-click="showModal(task)">
+        <div class="task-title">{{task.title}}</div>
+    </div>
+</div>
+<div class="add-new-task">
+    <div class="show-button" ng-hide="addNewTaskActive" ng-click="toggleAddTaskItem()">Add New Task</div>
+    <div ng-show="addNewTaskActive" class="form">
+        <textarea ng-keypress='addTaskItem($event)' focus ng-model="taskTitle"></textarea>
+        <div class="add-new-task-action">
+            <button ng-click="addTaskItem()">Add</button>
+            <i class="material-icons" ng-click="toggleAddTaskItem()">close</i>
+        </div>
+    </div>
+</div>

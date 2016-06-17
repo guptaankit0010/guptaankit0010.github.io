@@ -1,0 +1,21 @@
+<div class="list" ui-sortable="sortableOptionsLists" class="clearfix">
+    <div class="list-item" ng-repeat="list in lists">
+        <div class="list-header">
+            <div class="list-title">{{list.title}}</div>
+            <div class="list-menu"><i class="material-icons" ng-click="deleteListItem($index)">delete_forever</i></div>
+        </div>
+        <div class="list-tasks">
+            <tasks></tasks>
+        </div>
+    </div>
+    <div class="add-new-list">
+        <div class="show-button" ng-hide="addNewListActive" ng-click="toggleAddListItem()" ng-class="{active : addNewListActive}">Add New List</div>
+        <div ng-show="addNewListActive" class="form">
+            <input type="text" placeholder="Add New List" ng-model="listTitle" ng-keypress="addListItem($event)" />
+            <div class="add-new-task-action">
+                <button ng-click="addListItem()">Save</button>
+                <i class="material-icons" ng-click="toggleAddListItem()">close</i>
+            </div>
+        </div>
+    </div>
+</div>
